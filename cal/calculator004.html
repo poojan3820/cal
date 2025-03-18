@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<style>
+    .cal {
+        width: 100vw;
+        
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(209, 185, 114);
+        
+
+    }
+
+    .calculator {
+        width: 250px;
+        height: 300px;
+
+    }
+
+    #inputTxt {
+        width: 100px;
+        padding: 10px 29px;
+
+    }
+
+    #cal-row {
+
+        margin: 15px;
+
+    }
+
+    #cal-row button {
+        padding: 10px 15px;
+        /* border-radius: 50%; */
+        margin: 3px;
+        font-size: 15px;
+        font-family: sans-serif;
+        width: 45px;
+
+    }
+</style>
+
+<body>
+
+    <div class="cal">
+
+        <div class="calculator">
+
+
+            <!-- <input type="button" id="btn" value="*"> -->
+
+            <div id="cal-row">
+
+                <input type="text" id="inputTxt" value="" />
+                <button id="button2" onclick="backspace()">X</button>
+            </div>
+
+            <div id="cal-row">
+                <button id="button" onclick="clickone('1')">1</button>
+                <button id="button" onclick="clickone('2')">2</button>
+                <button id="button" onclick="clickone('3')">3</button>
+                <button id="button12" onclick="clickone('ce')">CE</button>
+            </div>
+            <div id="cal-row">
+                <button id="button" onclick="clickone('4')">4</button>
+                <button id="button" onclick="clickone('5')">5</button>
+                <button id="button" onclick="clickone('6')">6</button>
+                <button id="button" onclick="clickone('+')">+</button>
+            </div>
+            <div id="cal-row">
+                <button id="button" onclick="clickone('7')">7</button>
+                <button id="button" onclick="clickone('8')">8</button>
+                <button id="button" onclick="clickone('9')">9</button>
+                <button id="button" onclick="clickone('-')">-</button>
+            </div>
+            <div id="cal-row">
+                <button id="button" onclick="clickone('/')">/</button>
+                <button id="button" onclick="clickone('0')">0</button>
+                <button id="button" onclick="calculate()">=</button>
+                <button id="button" onclick="clickone('*')">*</button>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+
+        var opt = '';
+
+        var inputTxt = document.getElementById('inputTxt');
+         
+        function clickone(val) {
+
+            if (val == "+" || val == "-" || val == "/" || val == "*") 
+            {
+                if (opt == "") {
+                    opt = val;
+                }
+            }
+
+            inputTxt.value += val;
+
+            if (val == "ce") {
+                inputTxt.value = ""
+            }
+
+
+
+
+        }
+        function backspace(){
+
+            inputTxt.value = inputTxt.value.slice(0, -1)
+
+        }
+
+
+
+        function calculate() {
+            inVal = inputTxt.value;
+
+            console.log(opt);
+
+            arr = inVal.split(opt);
+
+            console.log(arr);
+
+
+            if (opt == '+' || opt == '-') {
+                result = 0;
+            }
+            else {
+                result = 1;
+            }
+
+            arr.forEach(element => {
+
+                if (opt == "*") {
+                    result = result * parseInt(element);
+                }
+                else if (opt == "-") {
+                    if (result != "") {
+                        result = result - parseInt(element);
+                    }
+                    else {
+                        result = parseInt(element);
+                    }
+                }
+                else if (opt == "+") {
+                    result = result + parseInt(element);
+                }
+                else if (opt == "/") {
+
+
+                    result = arr[0] / arr[1]
+
+                }
+            });
+            inputTxt.value = result;
+
+        }
+
+
+
+
+    </script>
+
+</body>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+
+</html>           
+ 
+ 
+ 
+
+
+ 
